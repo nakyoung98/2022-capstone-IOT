@@ -32,10 +32,10 @@ public class MycalenderRecyclerViewAdapter extends RecyclerView.Adapter<Mycalend
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) { //여기서 화면 값 설정
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+//        holder.mIdView.setText(mValues.get(position).id);
+//        holder.checkMorning.setText(mValues.get(position).content);
     }
 
     @Override
@@ -45,18 +45,23 @@ public class MycalenderRecyclerViewAdapter extends RecyclerView.Adapter<Mycalend
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView checkMorning;
+        public final TextView checkLunch;
+        public final TextView checkDinner;
+
         public PlaceholderItem mItem;
 
         public ViewHolder(FragmentCalenderBinding binding) {
             super(binding.getRoot());
-            mIdView = binding.itemNumber;
-            mContentView = binding.content;
+            mIdView = binding.date;
+            checkMorning = binding.checkMorning;
+            checkLunch = binding.checkLunch;
+            checkDinner = binding.checkDinner;
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + checkMorning.getText() + "'" + checkLunch.getText() + "'" + checkDinner.getText() + "'";
         }
     }
 }

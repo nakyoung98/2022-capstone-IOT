@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listitem_check"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/item_number"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
+        android:fontFamily="@font/chosun_nm"
+        android:text="8/31"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <TextView
-        android:id="@+id/content"
+        android:id="@+id/check_morning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
+        android:fontFamily="@font/chosun_nm"
+        android:text="○"
         android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:id="@+id/check_lunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="1"
+        android:fontFamily="@font/chosun_nm"
+        android:text="○"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:id="@+id/check_dinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="1"
+        android:fontFamily="@font/chosun_nm"
+        android:text="○"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
 </LinearLayout>
