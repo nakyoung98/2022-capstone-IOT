@@ -3,7 +3,10 @@
     android:id="@+id/listitem_check"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_margin="0dp"
+    android:background="@drawable/box_background"
+    android:orientation="horizontal"
+    android:padding="0dp">
 
     <TextView
         android:id="@+id/date"
@@ -12,7 +15,9 @@
         android:layout_margin="@dimen/text_margin"
         android:fontFamily="@font/chosun_nm"
         android:text="8/31"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/text_gray"
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/check_morning"
@@ -20,8 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:fontFamily="@font/chosun_nm"
-        android:text="○"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:text="@string/morning"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/text_gray"
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/check_lunch"
@@ -30,8 +37,10 @@
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
         android:fontFamily="@font/chosun_nm"
-        android:text="○"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:text="@string/lunch"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/text_gray"
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/check_dinner"
@@ -40,7 +49,9 @@
         android:layout_margin="@dimen/text_margin"
         android:layout_weight="1"
         android:fontFamily="@font/chosun_nm"
-        android:text="○"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:text="@string/dinner"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/text_gray"
+        android:textSize="24dp" />
 
 </LinearLayout>

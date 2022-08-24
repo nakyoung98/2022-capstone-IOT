@@ -2,4 +2,10 @@
     <string name="app_name">NoYakJa</string>
     <string name="calender_title">복 약 일 지</string>
     <string name="username"> 님,</string>
+    <string name="morning">아침</string>
+    <string name="lunch">점심</string>
+    <string name="dinner">저녁</string>
+    <string name="calender_information">▲ 터치하여 자세히 확인 </string>
+    <string name="time_setting_button">복약 시간 설정</string>
+    <string name="guardian_setting_button">보호자 연락처 설정</string>
 </resources>
