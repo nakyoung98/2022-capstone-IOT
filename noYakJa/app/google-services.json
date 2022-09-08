@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "778079064612",
+    "project_id": "noyakja-829d0",
+    "storage_bucket": "noyakja-829d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778079064612:android:cb671664b40897a8917eb1",
+        "android_client_info": {
+          "package_name": "com.cauiot.noyakja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778079064612-384uv610qv4glfst2ij3metttalfgvi1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEP6BSpyJCzIh-O7GvdoFlBigoEtL3_DM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778079064612-384uv610qv4glfst2ij3metttalfgvi1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
