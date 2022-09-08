@@ -8,4 +8,6 @@
     <string name="calender_information">▲ 터치하여 자세히 확인 </string>
     <string name="time_setting_button">복약 시간 설정</string>
     <string name="guardian_setting_button">보호자 연락처 설정</string>
+    <string name="add">추가</string>
+    <string name="delete">삭제</string>
 </resources>

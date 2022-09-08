@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listitem_guardian"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/box_background"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/guardian_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:fontFamily="@font/chosun_nm"
+        android:text="이나경"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/text_gray"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/guardian_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:fontFamily="@font/chosun_nm"
+        android:text="010-6279-3799"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/text_gray"
+        android:textSize="24dp" />
+</LinearLayout>

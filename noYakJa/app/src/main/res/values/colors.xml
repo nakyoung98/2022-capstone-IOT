@@ -11,4 +11,11 @@
     <color name="list_background_blue">#FFf5f9ff</color>
     <color name="list_background_lightblue">#FFFFFFFF</color>
     <color name="time_setting_button">#FFDCECFF</color>
+    <color name="guardian_setting_delete_button_background">#FFffeced</color>
+    <color name="guardian_setting_add_button_background">#FFe5f4ff</color>
+    <color name="guardian_setting_delete_button_stroke">#FFe60012</color>
+    <color name="guardian_setting_add_button_stroke">#ff0068b7</color>
+    <color name="red">#FFe60012</color>
+    <color name="blue">#ff0068b7</color>
+
 </resources>

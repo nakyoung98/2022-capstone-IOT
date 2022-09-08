@@ -3,11 +3,10 @@ package com.cauiot.noyakja;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.cauiot.noyakja.placeholder.PlaceholderContent.PlaceholderItem;
+import com.cauiot.noyakja.placeholder.calenderContent.PlaceholderItem;
 import com.cauiot.noyakja.databinding.FragmentCalenderBinding;
 
 import java.util.List;
