@@ -10,4 +10,8 @@
     <string name="guardian_setting_button">보호자 연락처 설정</string>
     <string name="add">추가</string>
     <string name="delete">삭제</string>
+    <string name="phone_auth_title">로그인</string>
+    <string name="auth_button">인증하기</string>
+    <string name="login_failed">로그인 실패</string>
+    <string name="send_complete">인증번호 전송 성공</string>
 </resources>
