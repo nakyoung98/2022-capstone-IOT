@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.concurrent.TimeUnit;
 
@@ -111,7 +112,7 @@ public class LoginActivity extends Activity {
     // [END on_start_check_user]
 
 
-    public void startPhoneNumberVerification(String phoneNumber) {
+    private void startPhoneNumberVerification(String phoneNumber) {
         // [START start_phone_auth]
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
@@ -124,7 +125,7 @@ public class LoginActivity extends Activity {
         // [END start_phone_auth]
     }
 
-    public PhoneAuthCredential verifyPhoneNumberWithCode(String verificationId, String code) {
+    private PhoneAuthCredential verifyPhoneNumberWithCode(String verificationId, String code) {
         // [START verify_with_code]
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         // [END verify_with_code]
@@ -132,7 +133,7 @@ public class LoginActivity extends Activity {
     }
 
     // [START resend_verification]
-    public void resendVerificationCode(String phoneNumber,
+    private void resendVerificationCode(String phoneNumber,
                                         PhoneAuthProvider.ForceResendingToken token) {
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
@@ -172,14 +173,20 @@ public class LoginActivity extends Activity {
     // [END sign_in_with_phone]
 
     private void updateUI(FirebaseUser user) {
-        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-        mainIntent.putExtra("user",user);
-        Log.i(TAG,"user phone number" + user.getPhoneNumber());
-        startActivity(mainIntent);
+//        if(firstSetUserInfoDB(user) == true) {
+//            Intent userInfoIntent = new Intent(LoginActivity.this, userInfoActivity.class);
+//            userInfoIntent.putExtra("uid", user.getUid()); //String
+//            Log.i(TAG,"Move to userInfoActicity \n user uid: " + user.getUid());
+//            startActivity(userInfoIntent);
+//        }else{
+//            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(mainIntent);
+//        }
     }
 
-    public boolean checkPhoneNumber(String phoneNumber) {
+    private boolean checkPhoneNumber(String phoneNumber) {
         if(phoneNumber.isEmpty()) return false;
+        if(phoneNumber.length() < 10) return false;
 
         return true;
     }
@@ -187,19 +194,42 @@ public class LoginActivity extends Activity {
     public void auth(View view){
 
         String phoneNumber = activityLoginBinding.phoneNumberInsert.getText().toString();
+        phoneNumber = splitPhone(phoneNumber);
 
         if(checkPhoneNumber(phoneNumber)){
             phoneNumber = "+82" + phoneNumber.substring(1);
             Log.i(TAG,phoneNumber);
 
             startPhoneNumberVerification(phoneNumber);
+
+            activityLoginBinding.authMessageText.setText(R.string.send_complete);
+            activityLoginBinding.authMessageText.setVisibility(View.VISIBLE);
+        }else{
+            activityLoginBinding.authMessageText.setText(R.string.rewrite_phone);
+            activityLoginBinding.authMessageText.setVisibility(View.VISIBLE);
         }
     }
 
-    public void check_auth(View view){
+    private String splitPhone(String phoneNumber){
+        String[] splitPhoneNumbers = phoneNumber.split("-");
+        String tempPhoneNumber = "";
+
+        for (String splitPhoneNumber:splitPhoneNumbers) {
+            tempPhoneNumber += splitPhoneNumber;
+        }
+
+        return tempPhoneNumber;
+    }
+
+    public void checkAuth(View view){
         String code = activityLoginBinding.authNumberInsert.getText().toString();
         Log.i(TAG, code);
 
         signInWithPhoneAuthCredential(verifyPhoneNumberWithCode(mVerificationId, code));
+    }
+
+    public boolean firstSetUserInfoDB(FirebaseUser user){
+
+        return false;
     }
 }

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         user= (FirebaseUser)userIntent.getExtras().get("user");
 
         activityMainBinding.textviewUsername.setText(user.getPhoneNumber());
-        Log.i(TAG, user.getPhoneNumber());
+        Log.i(TAG, "user name: " + user.getPhoneNumber());
 
         setContentView(view);
 

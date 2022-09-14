@@ -13,5 +13,8 @@
     <string name="phone_auth_title">로그인</string>
     <string name="auth_button">인증하기</string>
     <string name="login_failed">로그인 실패</string>
-    <string name="send_complete">인증번호 전송 성공</string>
+    <string name="send_complete">인증번호 전송 완료</string>
+    <string name="rewrite_phone">전화번호가 정확한지 확인해주세요</string>
+    <string name="phone_hint">01000000000</string>
+    <string name="user_info_title">회원정보 입력</string>
 </resources>
