@@ -17,4 +17,5 @@
     <string name="rewrite_phone">전화번호가 정확한지 확인해주세요</string>
     <string name="phone_hint">01000000000</string>
     <string name="user_info_title">회원정보 입력</string>
+    <string name="invalid_name">이름을 다시 입력하세요</string>
 </resources>

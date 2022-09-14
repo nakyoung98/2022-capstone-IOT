@@ -9,8 +9,8 @@ import android.view.View;
 
 import com.cauiot.noyakja.databinding.ActivityGuardianSettingBinding;
 import com.cauiot.noyakja.databinding.ActivityMainBinding;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 
 public class MainActivity extends AppCompatActivity {
 

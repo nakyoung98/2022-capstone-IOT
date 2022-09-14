@@ -46,6 +46,7 @@
 
             <Button
                 android:id="@+id/auth_button"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/time_setting_button_background"
@@ -87,6 +88,7 @@
 
             <Button
                 android:id="@+id/login_button"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
@@ -117,11 +119,30 @@
         android:id="@+id/auth_message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/chosun_nm"
         android:paddingBottom="5dp"
         android:text="@string/send_complete"
         android:textColor="@color/blue"
         android:textSize="20dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout" />
+
+    <TextView
+        android:id="@+id/invalid_auth_message_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/chosun_nm"
+        android:paddingBottom="5dp"
+        android:text="@string/send_complete"
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

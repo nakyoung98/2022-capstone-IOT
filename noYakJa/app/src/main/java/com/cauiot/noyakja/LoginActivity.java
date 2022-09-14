@@ -173,15 +173,22 @@ public class LoginActivity extends Activity {
     // [END sign_in_with_phone]
 
     private void updateUI(FirebaseUser user) {
-//        if(firstSetUserInfoDB(user) == true) {
-//            Intent userInfoIntent = new Intent(LoginActivity.this, userInfoActivity.class);
-//            userInfoIntent.putExtra("uid", user.getUid()); //String
-//            Log.i(TAG,"Move to userInfoActicity \n user uid: " + user.getUid());
-//            startActivity(userInfoIntent);
-//        }else{
-//            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(mainIntent);
-//        }
+        if(firstSetUserInfoDB(user) == true) {
+            Intent userInfoIntent = new Intent(LoginActivity.this, userInfoActivity.class);
+
+            //userInfo 담아 보냄
+            UserInfo userInfo = new UserInfo();
+            userInfo.uid = user.getUid();
+            userInfo.phone = user.getPhoneNumber();
+
+            userInfoIntent.putExtra("user",userInfo);
+
+            Log.i(TAG,"Move to userInfoActicity");
+            startActivity(userInfoIntent);
+        }else{
+            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(mainIntent);
+        }
     }
 
     private boolean checkPhoneNumber(String phoneNumber) {
@@ -202,13 +209,19 @@ public class LoginActivity extends Activity {
 
             startPhoneNumberVerification(phoneNumber);
 
-            activityLoginBinding.authMessageText.setText(R.string.send_complete);
+            goneText();
             activityLoginBinding.authMessageText.setVisibility(View.VISIBLE);
         }else{
-            activityLoginBinding.authMessageText.setText(R.string.rewrite_phone);
-            activityLoginBinding.authMessageText.setVisibility(View.VISIBLE);
+            goneText();
+            activityLoginBinding.invalidAuthMessageText.setVisibility(View.VISIBLE);
         }
     }
+
+    private void goneText(){
+        activityLoginBinding.authMessageText.setVisibility(View.GONE);
+        activityLoginBinding.invalidAuthMessageText.setVisibility(View.GONE);
+    }
+
 
     private String splitPhone(String phoneNumber){
         String[] splitPhoneNumbers = phoneNumber.split("-");
