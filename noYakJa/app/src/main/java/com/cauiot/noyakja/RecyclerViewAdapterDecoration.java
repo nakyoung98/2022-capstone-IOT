@@ -8,11 +8,11 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MycalenderRecyclerViewAdapterDecoration extends RecyclerView.ItemDecoration {
+public class RecyclerViewAdapterDecoration extends RecyclerView.ItemDecoration {
 
     private final int offset;
 
-    public MycalenderRecyclerViewAdapterDecoration(Context context) {
+    public RecyclerViewAdapterDecoration(Context context) {
         this.offset = dpToPx(context, 1);
     }
 

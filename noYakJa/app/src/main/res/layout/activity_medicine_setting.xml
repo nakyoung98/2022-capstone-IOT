@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MedicineSettingActivity">
+
+    <TextView
+        android:id="@+id/guardian_add_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/chosun_nm"
+        android:text="@string/time_setting_button"
+        android:textColor="@color/text_gray"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/guardian_name_title2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/guardian_setting_add_button"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/medicine_count"
+        android:textColor="@color/blue"
+        android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinner_title" />
+
+    <TextView
+        android:id="@+id/guardian_phone_title2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/guardian_setting_add_button"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/medicine_time"
+        android:textColor="@color/blue"
+        android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guardian_add_title2" />
+
+    <TextView
+        android:id="@+id/morning_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/guardian_setting_add_button_no_solid"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/morning"
+        android:textColor="@color/blue"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guardian_phone_title2" />
+
+    <EditText
+        android:id="@+id/morning_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/box_background"
+        android:ems="10"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:inputType="time"
+        android:padding="10dp"
+        android:textColor="@color/text_gray"
+        android:textColorHint="@color/text_gray"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/morning_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/morning_title"
+        app:layout_constraintTop_toTopOf="@+id/morning_title" />
+
+    <TextView
+        android:id="@+id/lunch_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/guardian_setting_add_button_no_solid"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/lunch"
+        android:textColor="@color/blue"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/morning_title" />
+
+    <EditText
+        android:id="@+id/lunch_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/box_background"
+        android:ems="10"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:inputType="time"
+        android:padding="10dp"
+        android:textColor="@color/text_gray"
+        android:textColorHint="@color/text_gray"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lunch_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/morning_title"
+        app:layout_constraintTop_toTopOf="@+id/lunch_title" />
+
+    <TextView
+        android:id="@+id/dinner_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/guardian_setting_add_button_no_solid"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/dinner"
+        android:textColor="@color/blue"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_title" />
+
+    <EditText
+        android:id="@+id/dinner_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/box_background"
+        android:ems="10"
+        android:fontFamily="@font/chosun_nm"
+        android:gravity="center"
+        android:inputType="time"
+        android:padding="10dp"
+        android:textColor="@color/text_gray"
+        android:textColorHint="@color/text_gray"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dinner_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/morning_title"
+        app:layout_constraintTop_toTopOf="@+id/dinner_title" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guardian_name_title2">
+
+        <ToggleButton
+            android:id="@+id/morning_button"
+            style="@style/time_setting_off_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOff="@string/morning"
+            android:textOn="@string/morning" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button5"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/medicine_count_background"
+            android:fontFamily="@font/chosun_nm"
+            android:text="@string/lunch"
+            android:textColor="@color/blue"
+            android:textSize="30dp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button6"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/medicine_count_background"
+            android:fontFamily="@font/chosun_nm"
+            android:text="@string/dinner"
+            android:textColor="@color/blue"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/time_setting_button_background"
+        android:fontFamily="@font/chosun_nm"
+        android:text="@string/medicine_setting_complete"
+        android:textColor="@color/text_gray"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,16 +57,8 @@
 
     <Button
         android:id="@+id/button_time_setting"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/time_setting_button_background"
-        android:fontFamily="@font/chosun_nm"
+        style="@style/noyakja_main_button"
         android:text="@string/time_setting_button"
-        android:textColor="@color/text_gray"
-        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/button_guardian_setting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

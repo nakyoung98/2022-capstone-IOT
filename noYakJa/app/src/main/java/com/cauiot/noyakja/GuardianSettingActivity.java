@@ -9,7 +9,7 @@ import android.view.View;
 import com.cauiot.noyakja.databinding.ActivityGuardianSettingBinding;
 import com.cauiot.noyakja.databinding.ActivityMainBinding;
 
-public class GuardianSetting extends AppCompatActivity {
+public class GuardianSettingActivity extends AppCompatActivity {
 
     private ActivityGuardianSettingBinding activityGuardianSettingBinding;
 

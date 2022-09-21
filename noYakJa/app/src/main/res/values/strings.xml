@@ -18,4 +18,12 @@
     <string name="phone_hint">01000000000</string>
     <string name="user_info_title">회원정보 입력</string>
     <string name="invalid_name">이름을 다시 입력하세요</string>
+    <string name="guardian_add_title">보호자 연락처 추가</string>
+    <string name="name">이름</string>
+    <string name="phone">전화번호</string>
+    <string name="text_hint">이 곳을 눌러 입력</string>
+    <string name="put_text_success">입력 완료</string>
+    <string name="medicine_time">복약시간</string>
+    <string name="medicine_count">복약횟수</string>
+    <string name="medicine_setting_complete">시간 설정 완료</string>
 </resources>

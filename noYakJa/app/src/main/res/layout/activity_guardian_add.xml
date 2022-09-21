@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuardianAddActivity">
+
+    <TextView
+        android:id="@+id/guardian_add_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/chosun_nm"
+        android:text="@string/guardian_add_title"
+        android:textColor="@color/text_gray"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/guardian_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/name"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guardian_add_title"
+        android:background="@drawable/guardian_setting_add_button"
+        android:fontFamily="@font/chosun_nm"
+        android:textColor="@color/blue" />
+
+    <EditText
+        android:id="@+id/guardian_name_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/box_background"
+        android:ems="10"
+        android:fontFamily="@font/chosun_nm"
+        android:hint="@string/text_hint"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textColor="@color/text_gray"
+        android:textColorHint="@color/text_gray"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guardian_name_title"
+        app:layout_constraintTop_toBottomOf="@+id/guardian_name_title" />
+
+    <TextView
+        android:id="@+id/guardian_phone_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/guardian_setting_add_button"
+        android:fontFamily="@font/chosun_nm"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="@string/phone"
+        android:textColor="@color/blue"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guardian_name_text" />
+
+    <EditText
+        android:id="@+id/guardian_phone_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/box_background"
+        android:ems="10"
+        android:fontFamily="@font/chosun_nm"
+        android:hint="@string/text_hint"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textColor="@color/text_gray"
+        android:textColorHint="@color/text_gray"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guardian_phone_title"
+        app:layout_constraintTop_toBottomOf="@+id/guardian_phone_title" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/time_setting_button_background"
+        android:fontFamily="@font/chosun_nm"
+        android:text="@string/put_text_success"
+        android:textColor="@color/text_gray"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

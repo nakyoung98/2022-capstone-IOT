@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userInfoActivity">
+    tools:context=".UserInfoActivity">
 
     <TextView
         android:id="@+id/invalid_name_message_text"
@@ -26,7 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:background="@drawable/list_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_info_title">
@@ -38,7 +37,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/auth_number_text"
+                android:id="@+id/phone_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/chosun_nm"
@@ -49,7 +48,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/phone_number_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/chosun_nm"
@@ -85,7 +84,7 @@
                 android:ems="10"
                 android:fontFamily="@font/chosun_nm"
                 android:gravity="center"
-                android:inputType="phone"
+                android:inputType="textPersonName|text"
                 android:textColor="@color/text_gray"
                 android:textSize="18dp" />
 
@@ -101,6 +100,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/time_setting_button_background"
         android:fontFamily="@font/chosun_nm"
+        android:onClick="userInfoButton"
         android:text="입력완료"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="@+id/tableLayout"
