@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.cauiot.noyakja.DB.DBUser;
 import com.cauiot.noyakja.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,13 +21,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.firestore.auth.User;
+import com.google.firebase.database.DataSnapshot;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends Activity {
 
     private static final String TAG = "LoginActivity";
+
+    public UserInfo userInfo = null;
+    public FirebaseUser user = null;
 
     private ActivityLoginBinding activityLoginBinding;
 
@@ -106,8 +111,9 @@ public class LoginActivity extends Activity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+        user = mAuth.getCurrentUser();
+        //Log.i(TAG, currentUser.getUid());
+        if(user != null){updateUI(user);}
     }
     // [END on_start_check_user]
 
@@ -160,7 +166,8 @@ public class LoginActivity extends Activity {
                             FirebaseUser user = task.getResult().getUser();
 
                             // Update UI
-                        } else {
+                            updateUI(user);
+                        } else { //가입실패
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
@@ -173,22 +180,10 @@ public class LoginActivity extends Activity {
     // [END sign_in_with_phone]
 
     private void updateUI(FirebaseUser user) {
-        if(firstSetUserInfoDB(user) == true) {
-            Intent userInfoIntent = new Intent(LoginActivity.this, userInfoActivity.class);
 
-            //userInfo 담아 보냄
-            UserInfo userInfo = new UserInfo();
-            userInfo.uid = user.getUid();
-            userInfo.phone = user.getPhoneNumber();
+        findUser(user);
 
-            userInfoIntent.putExtra("user",userInfo);
-
-            Log.i(TAG,"Move to userInfoActicity");
-            startActivity(userInfoIntent);
-        }else{
-            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(mainIntent);
-        }
+        //todo 전화번호 인증만하고 앱을 나간 사람에게는, 다음 화면을 회원정보를 입력하게해야함.
     }
 
     private boolean checkPhoneNumber(String phoneNumber) {
@@ -241,8 +236,56 @@ public class LoginActivity extends Activity {
         signInWithPhoneAuthCredential(verifyPhoneNumberWithCode(mVerificationId, code));
     }
 
-    public boolean firstSetUserInfoDB(FirebaseUser user){
 
-        return false;
+    private void findUser(FirebaseUser user){    //getData
+
+
+        DBUser DBUser = new DBUser();
+
+        Log.i(TAG,"uid: "+user.getUid());
+
+
+        DBUser.getDatabaseReference().child(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(!task.isSuccessful()){
+                    Log.e(TAG, "DB 수집 오류", task.getException());
+                }else{
+                    Log.i(TAG, "DB 수집 성공");
+                    HashMap<String,String> hashMap = (HashMap) task.getResult().getValue();
+
+                    if(hashMap != null) {
+                        String name = hashMap.get("name");
+                        String phone = hashMap.get("phone");
+                        String uid = hashMap.get("uid");
+
+                        userInfo = new UserInfo(name, phone, uid);
+
+                        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                        mainIntent.putExtra("user",userInfo);
+
+                        Log.i(TAG,"LoginActivity -> MainActivity");
+
+                        startActivity(mainIntent);
+                    }else{ //첫로그인 (첫가입)
+                        Intent userInfoIntent = new Intent(LoginActivity.this, UserInfoActivity.class);
+
+                        //userInfo 담아 보냄
+                        userInfo = new UserInfo();
+                        userInfo.setUid(user.getUid());
+                        userInfo.setPhone(user.getPhoneNumber());
+
+                        userInfoIntent.putExtra("user",userInfo);
+
+                        Log.i(TAG,"LoginActivity -> UserInfoActivity");
+                        startActivity(userInfoIntent);
+                    }
+                }
+
+
+            }
+        });
+
     }
+
 }

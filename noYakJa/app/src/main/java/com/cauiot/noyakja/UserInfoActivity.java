@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.cauiot.noyakja.DB.DBUser;
 import com.cauiot.noyakja.databinding.ActivityUserInfoBinding;
-import com.google.firebase.firestore.auth.User;
 
-public class userInfoActivity extends AppCompatActivity {
+public class UserInfoActivity extends AppCompatActivity {
 
-    private final String TAG = "userInfoActivity";
+    private final String TAG = "UserInfoActivity";
     private ActivityUserInfoBinding activityUserInfoBinding;
 
     private UserInfo userInfo;
@@ -26,6 +26,8 @@ public class userInfoActivity extends AppCompatActivity {
 
         Intent userInfoIntent = getIntent();
         userInfo = (UserInfo)userInfoIntent.getSerializableExtra("user");
+
+        activityUserInfoBinding.phoneNumberText.setText(userInfo.getPhone());
     }
 
     public void userInfoButton(View view){
@@ -33,16 +35,29 @@ public class userInfoActivity extends AppCompatActivity {
         String name = activityUserInfoBinding.nameInsert.getText().toString();
 
         if(validName(name)){
-            userInfo.name = name;
+            userInfo.setName(name);
 
             //todo 유저 정보 DB 등록
+            DBUser DBUser = new DBUser();
+            try{
+                DBUser.addUser(userInfo);
+            }catch (Exception e){
+                Log.e(TAG, "DB등록 에러 발생");
+            }
 
+            Log.i(TAG,"Move to userInfoActicity \n user name: " + userInfo.getName());
 
-            Intent MainIntent = new Intent(userInfoActivity.this, MainActivity.class);
-            Log.i(TAG,"Move to userInfoActicity \n user name: " + userInfo.name);
+            updateUI();
         }else{//invalid name regex
             activityUserInfoBinding.invalidNameMessageText.setVisibility(View.VISIBLE);
+            Log.i(TAG, "유효하지 않은 이름 입력");
         }
+    }
+
+    private void updateUI(){
+        Intent MainIntent = new Intent(UserInfoActivity.this, MainActivity.class);
+        MainIntent.putExtra("user",userInfo);
+        startActivity(MainIntent);
     }
 
     private boolean validName(String name){

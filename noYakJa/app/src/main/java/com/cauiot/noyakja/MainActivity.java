@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding activityMainBinding;
 
-    private FirebaseUser user;
+    private UserInfo user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
 
         //intent 오류발생가능성 있음, serializable 등의 조치 필요할수도
         Intent userIntent = getIntent();
-        user= (FirebaseUser)userIntent.getExtras().get("user");
+        user= (UserInfo)userIntent.getExtras().get("user");
 
-        activityMainBinding.textviewUsername.setText(user.getPhoneNumber());
-        Log.i(TAG, "user name: " + user.getPhoneNumber());
+        activityMainBinding.textviewUsername.setText(user.getName());
+        Log.i(TAG, "user name: " + user.getName());
 
         setContentView(view);
 
