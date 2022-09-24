@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/guardian_name_title2"
+        android:id="@+id/medicine_count_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/dinner_title" />
 
     <TextView
-        android:id="@+id/guardian_phone_title2"
+        android:id="@+id/medicine_time_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -78,7 +78,7 @@
         android:textColor="@color/blue"
         android:textSize="35dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guardian_phone_title2" />
+        app:layout_constraintTop_toBottomOf="@+id/medicine_time_title" />
 
     <EditText
         android:id="@+id/morning_time"
@@ -188,13 +188,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guardian_name_title2">
+        app:layout_constraintTop_toBottomOf="@+id/medicine_count_title">
 
         <ToggleButton
             android:id="@+id/morning_button"
             style="@style/time_setting_off_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:textOff="@string/morning"
             android:textOn="@string/morning" />
 
@@ -204,12 +205,12 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/lunch_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/medicine_count_background"
+            android:background="@drawable/medicine_count_background_off"
             android:fontFamily="@font/chosun_nm"
             android:text="@string/lunch"
             android:textColor="@color/blue"
@@ -221,12 +222,12 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/dinner_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/medicine_count_background"
+            android:background="@drawable/medicine_count_background_off"
             android:fontFamily="@font/chosun_nm"
             android:text="@string/dinner"
             android:textColor="@color/blue"
@@ -234,7 +235,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/medicine_setting_complete_button"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
