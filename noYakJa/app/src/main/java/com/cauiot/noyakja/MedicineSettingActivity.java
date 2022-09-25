@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import com.cauiot.noyakja.DB.Medicine;
 import com.cauiot.noyakja.databinding.ActivityMedicineSettingBinding;
@@ -27,19 +28,40 @@ public class MedicineSettingActivity extends AppCompatActivity {
         setContentView(view);
 
 
+
         activityMedicineSettingBinding.morningButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b == true) {
-                    activityMedicineSettingBinding.morningButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.medicine_count_background_on, getTheme()));
-                    activityMedicineSettingBinding.morningButton.setTextColor(getResources().getColor(R.color.white,getTheme()));
-
-                }else{
-                    activityMedicineSettingBinding.morningButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.medicine_count_background_off, getTheme()));
-                    activityMedicineSettingBinding.morningButton.setTextColor(getResources().getColor(R.color.blue,getTheme()));
-                }
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b){
+                buttonChangeEffect(activityMedicineSettingBinding.morningButton, b);
+                medicine.setMorning(b);
             }
         });
+
+        activityMedicineSettingBinding.lunchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b){
+                buttonChangeEffect(activityMedicineSettingBinding.morningButton, b);
+                medicine.setLunch(b);
+            }
+        });
+
+        activityMedicineSettingBinding.dinnerButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b){
+                buttonChangeEffect(activityMedicineSettingBinding.morningButton, b);
+                medicine.setDinner(b);
+            }
+        });
+    }
+
+    private void buttonChangeEffect(ToggleButton toggleButton, boolean b){
+        if (b == true){
+            toggleButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.medicine_count_background_on, getTheme()));
+            toggleButton.setTextColor(getResources().getColor(R.color.white,getTheme()));
+        }else{
+            toggleButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.medicine_count_background_off, getTheme()));
+            toggleButton.setTextColor(getResources().getColor(R.color.blue,getTheme()));
+        }
     }
 
 }

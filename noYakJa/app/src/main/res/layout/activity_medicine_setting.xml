@@ -204,34 +204,31 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
+        <ToggleButton
             android:id="@+id/lunch_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/time_setting_off_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/medicine_count_background_off"
-            android:fontFamily="@font/chosun_nm"
-            android:text="@string/lunch"
-            android:textColor="@color/blue"
-            android:textSize="30dp" />
+            android:clickable="true"
+            android:textOff="@string/lunch"
+            android:textOn="@string/lunch" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
+        <ToggleButton
             android:id="@+id/dinner_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/time_setting_off_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/medicine_count_background_off"
-            android:fontFamily="@font/chosun_nm"
-            android:text="@string/dinner"
-            android:textColor="@color/blue"
-            android:textSize="30dp" />
+            android:clickable="true"
+            android:textOff="@string/dinner"
+            android:textOn="@string/dinner" />
+
     </LinearLayout>
 
     <Button
