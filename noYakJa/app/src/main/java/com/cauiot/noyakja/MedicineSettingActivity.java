@@ -22,10 +22,13 @@ public class MedicineSettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         activityMedicineSettingBinding = ActivityMedicineSettingBinding.inflate(getLayoutInflater());
         View view = activityMedicineSettingBinding.getRoot();
+
+        medicine = new Medicine();
+
         setContentView(view);
+
 
 
 
@@ -40,7 +43,7 @@ public class MedicineSettingActivity extends AppCompatActivity {
         activityMedicineSettingBinding.lunchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b){
-                buttonChangeEffect(activityMedicineSettingBinding.morningButton, b);
+                buttonChangeEffect(activityMedicineSettingBinding.lunchButton, b);
                 medicine.setLunch(b);
             }
         });
@@ -48,7 +51,7 @@ public class MedicineSettingActivity extends AppCompatActivity {
         activityMedicineSettingBinding.dinnerButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b){
-                buttonChangeEffect(activityMedicineSettingBinding.morningButton, b);
+                buttonChangeEffect(activityMedicineSettingBinding.dinnerButton, b);
                 medicine.setDinner(b);
             }
         });

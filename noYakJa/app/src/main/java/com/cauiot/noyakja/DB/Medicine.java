@@ -8,6 +8,12 @@ public class Medicine extends DB{
     private TimeCount lunch;
     private TimeCount dinner;
 
+    public Medicine(){
+        morning = new TimeCount();
+        lunch = new TimeCount();
+        dinner = new TimeCount();
+    }
+
     @Override
     public void setDBName() {
         super.DB = "Medicine";
