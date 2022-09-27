@@ -6,20 +6,20 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.cauiot.noyakja.placeholder.PlaceholderContent.PlaceholderItem;
+import com.cauiot.noyakja.placeholder.GuardianContent.GuardianItem;
 import com.cauiot.noyakja.databinding.FragmentGuardianBinding;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
+ * {@link RecyclerView.Adapter} that can display a {@link GuardianItem}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyGuardianRecyclerViewAdapter extends RecyclerView.Adapter<MyGuardianRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<GuardianItem> mValues;
 
-    public MyGuardianRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MyGuardianRecyclerViewAdapter(List<GuardianItem> items) {
         mValues = items;
     }
 
@@ -45,7 +45,7 @@ public class MyGuardianRecyclerViewAdapter extends RecyclerView.Adapter<MyGuardi
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
         public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public GuardianItem mItem;
 
         public ViewHolder(FragmentGuardianBinding binding) {
             super(binding.getRoot());

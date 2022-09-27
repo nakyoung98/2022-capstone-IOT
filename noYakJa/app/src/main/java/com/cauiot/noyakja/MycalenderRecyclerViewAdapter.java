@@ -6,20 +6,20 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.cauiot.noyakja.placeholder.calenderContent.PlaceholderItem;
+import com.cauiot.noyakja.placeholder.CalenderContent.ContentItem;
 import com.cauiot.noyakja.databinding.FragmentCalenderBinding;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
+ * {@link RecyclerView.Adapter} that can display a {@link ContentItem}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MycalenderRecyclerViewAdapter extends RecyclerView.Adapter<MycalenderRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<ContentItem> mValues;
 
-    public MycalenderRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MycalenderRecyclerViewAdapter(List<ContentItem> items) {
         mValues = items;
     }
 
@@ -50,7 +50,7 @@ public class MycalenderRecyclerViewAdapter extends RecyclerView.Adapter<Mycalend
         public final TextView checkLunch;
         public final TextView checkDinner;
 
-        public PlaceholderItem mItem;
+        public ContentItem mItem;
 
         public ViewHolder(FragmentCalenderBinding binding) {
             super(binding.getRoot());

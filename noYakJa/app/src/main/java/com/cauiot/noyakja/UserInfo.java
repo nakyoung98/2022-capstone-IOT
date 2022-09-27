@@ -10,6 +10,7 @@ public class UserInfo implements Serializable {
     public UserInfo() {}
     public UserInfo(String name, String phone, String uid) {this.name = name; this.phone = phone; this.uid = uid;}
 
+
     public void setName(String name) {this.name = name;}
     protected void setPhone(String phone) {this.phone = phone;}
     protected void setUid(String uid) {this.uid = uid;}

@@ -20,8 +20,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_username" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.cauiot.noyakja.calenderFragment"
+        android:id="@+id/calender_fragment"
+        android:name="com.cauiot.noyakja.CalenderFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -53,7 +53,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView" />
+        app:layout_constraintTop_toBottomOf="@+id/calender_fragment" />
 
     <Button
         android:id="@+id/button_time_setting"

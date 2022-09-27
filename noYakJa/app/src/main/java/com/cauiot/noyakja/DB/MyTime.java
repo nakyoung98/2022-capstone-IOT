@@ -1,9 +1,11 @@
 package com.cauiot.noyakja.DB;
 
-public class MyTime {
+import java.io.Serializable;
 
-    private int hour;
-    private int min;
+public class MyTime implements Serializable {
+
+    public int hour;
+    public int min;
 
     public void setHour(int hour) {this.hour = hour;}
     public void setMin(int min) {this.min = min;}

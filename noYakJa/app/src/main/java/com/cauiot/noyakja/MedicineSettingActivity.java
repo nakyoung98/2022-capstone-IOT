@@ -1,31 +1,27 @@
 package com.cauiot.noyakja;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
-import android.app.Dialog;
-import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import com.cauiot.noyakja.DB.DBSettingMedicine;
+import com.cauiot.noyakja.DB.DBStoreQuery;
 import com.cauiot.noyakja.DB.MyTime;
+import com.cauiot.noyakja.DB.UserInfo;
 import com.cauiot.noyakja.databinding.ActivityMedicineSettingBinding;
-
-import java.util.Calendar;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class MedicineSettingActivity extends AppCompatActivity {
 
@@ -36,6 +32,8 @@ public class MedicineSettingActivity extends AppCompatActivity {
     private DBSettingMedicine dbSettingMedicine;
     private TimePickerFragment newFragment;
 
+    private UserInfo userInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +41,11 @@ public class MedicineSettingActivity extends AppCompatActivity {
         activityMedicineSettingBinding = ActivityMedicineSettingBinding.inflate(getLayoutInflater());
         View view = activityMedicineSettingBinding.getRoot();
 
+        userInfo = (UserInfo) getIntent().getSerializableExtra(UserInfo.getKey());
+
         dbSettingMedicine = new DBSettingMedicine();
 
+        checkMedicineSetting();
         //todo
         /*
         1. db에서 값 받아오기
@@ -56,7 +57,7 @@ public class MedicineSettingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b){
                 buttonChangeEffect(activityMedicineSettingBinding.morningButton, b);
-                dbSettingMedicine.getMedicine().setMorning(b);
+                dbSettingMedicine.getMedicine().setMorningBool(b);
                 Log.i(TAG, "morning checked: "+ b);
             }
         });
@@ -65,7 +66,7 @@ public class MedicineSettingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b){
                 buttonChangeEffect(activityMedicineSettingBinding.lunchButton, b);
-                dbSettingMedicine.getMedicine().setLunch(b);
+                dbSettingMedicine.getMedicine().setLunchBool(b);
                 Log.i(TAG, "lunch checked: "+ b);
             }
         });
@@ -74,7 +75,7 @@ public class MedicineSettingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b){
                 buttonChangeEffect(activityMedicineSettingBinding.dinnerButton, b);
-                dbSettingMedicine.getMedicine().setDinner(b);
+                dbSettingMedicine.getMedicine().setDinnerBool(b);
                 Log.i(TAG, "dinner checked: "+ b);
             }
         });
@@ -106,7 +107,8 @@ public class MedicineSettingActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                dbSettingMedicine.getMedicine().setMorning(newFragment.getMyTime());
+                if(newFragment!=null) dbSettingMedicine.getMedicine().setMorningMyTime(newFragment.getMyTime());
+                Log.i(TAG,"Morning"+ dbSettingMedicine.getMedicine().getMorning());
             }
 
             @Override
@@ -121,7 +123,8 @@ public class MedicineSettingActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                dbSettingMedicine.getMedicine().setLunch(newFragment.getMyTime());
+                if(newFragment!=null) dbSettingMedicine.getMedicine().setLunchMyTime(newFragment.getMyTime());
+                Log.i(TAG,"Lunch"+ dbSettingMedicine.getMedicine().getLunch());
             }
 
             @Override
@@ -136,7 +139,8 @@ public class MedicineSettingActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                dbSettingMedicine.getMedicine().setDinner(newFragment.getMyTime());
+                if(newFragment!=null) dbSettingMedicine.getMedicine().setDinnerMyTime(newFragment.getMyTime());
+                Log.i(TAG,"Dinner"+ dbSettingMedicine.getMedicine().getDinner());
             }
 
             @Override
@@ -147,13 +151,23 @@ public class MedicineSettingActivity extends AppCompatActivity {
         activityMedicineSettingBinding.medicineSettingCompleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo
-                /*
-                1. db에 저장
-                 */
-
-                Intent mainIntent = new Intent(MedicineSettingActivity.this, MainActivity.class);
-                startActivity(mainIntent);
+                //todo db
+                Log.i(TAG,"lastData:" + dbSettingMedicine.getMedicine().toString());
+                DBStoreQuery dbStoreQuery = new DBStoreQuery(dbSettingMedicine.getDBName(), userInfo.getUid());
+                dbStoreQuery.getReference().document(userInfo.getUid()).set(dbSettingMedicine).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "입력 성공");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG,"DB 입력 중 오류발생",e);
+                    }
+                })
+                ;
+                //todo error 검증, 빈칸이 있을때 대처 필요 (추후 수정예정)
+                finish();
             }
         });
 
@@ -176,6 +190,45 @@ public class MedicineSettingActivity extends AppCompatActivity {
         newFragment.setCurrentTextView(textView);
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
+
+    private void checkMedicineSetting() {
+        DBStoreQuery dbStoreQuery = new DBStoreQuery(dbSettingMedicine.getDBName(), userInfo.getUid());
+        dbStoreQuery.getReference().document(userInfo.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()){
+                        Log.d(TAG, "DocumentSnapshotData: " + document.getData());
+                        dbSettingMedicine = document.toObject(DBSettingMedicine.class);
+                        Log.i(TAG, "가져온 db값: "+ dbSettingMedicine.getMedicine().toString());
+                        setUIWithDB();
+                    }else{
+                        Log.d(TAG, "No such document");
+                    }
+                }else{
+                    Log.d(TAG, "get failed with", task.getException());
+                }
+            }
+        });
+    }
+
+    private void setUIWithDB(){
+        setTextView(activityMedicineSettingBinding.morningTimeTextView,dbSettingMedicine.getMedicine().getMorning().getTime());
+        setTextView(activityMedicineSettingBinding.lunchTimeTextView, dbSettingMedicine.getMedicine().getLunch().getTime());
+        setTextView(activityMedicineSettingBinding.dinnerTimeTextView, dbSettingMedicine.getMedicine().getDinner().getTime());
+
+        buttonChangeEffect(activityMedicineSettingBinding.morningButton, dbSettingMedicine.getMedicine().getMorning().isEat);
+        buttonChangeEffect(activityMedicineSettingBinding.lunchButton, dbSettingMedicine.getMedicine().getLunch().isEat);
+        buttonChangeEffect(activityMedicineSettingBinding.dinnerButton, dbSettingMedicine.getMedicine().getDinner().isEat);
+
+    }
+
+    private void setTextView(TextView textView, MyTime t){
+        if(t.getMin() != 0) textView.setText(t.getHour()+":"+t.getMin());
+        else textView.setText(t.getHour()+":"+"00");
+    }
+
 
 }
 

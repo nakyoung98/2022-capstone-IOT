@@ -12,12 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cauiot.noyakja.placeholder.calenderContent;
+import com.cauiot.noyakja.placeholder.CalenderContent;
 
 /**
  * A fragment representing a list of Items.
  */
-public class calenderFragment extends Fragment {
+public class CalenderFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -28,13 +28,13 @@ public class calenderFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public calenderFragment() {
+    public CalenderFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static calenderFragment newInstance(int columnCount) {
-        calenderFragment fragment = new calenderFragment();
+    public static CalenderFragment newInstance(int columnCount) {
+        CalenderFragment fragment = new CalenderFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -65,7 +65,7 @@ public class calenderFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MycalenderRecyclerViewAdapter(calenderContent.ITEMS));
+            recyclerView.setAdapter(new MycalenderRecyclerViewAdapter(CalenderContent.ITEMS));
         }
         return view;
     }

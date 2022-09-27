@@ -1,7 +1,7 @@
 package com.cauiot.noyakja.DB;
 
 public class DBSettingMedicine extends DB{
-    private Medicine medicine;
+    public Medicine medicine;
 
     public DBSettingMedicine(){ medicine = new Medicine();}
 

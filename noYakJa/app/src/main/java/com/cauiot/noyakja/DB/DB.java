@@ -1,6 +1,8 @@
 package com.cauiot.noyakja.DB;
 
-public abstract class DB {
+import java.io.Serializable;
+
+public abstract class DB implements Serializable {
     public String DB;
 
     public DB(){

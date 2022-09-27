@@ -282,6 +282,7 @@ public class LoginActivity extends Activity {
 
                         Log.i(TAG,"LoginActivity -> UserInfoActivity");
                         startActivity(userInfoIntent);
+                        finish();
                     }
                 }
 

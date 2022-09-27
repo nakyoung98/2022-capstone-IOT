@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cauiot.noyakja.placeholder.PlaceholderContent;
+import com.cauiot.noyakja.placeholder.GuardianContent;
 
 /**
  * A fragment representing a list of Items.
@@ -67,7 +67,7 @@ public class GuardianFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyGuardianRecyclerViewAdapter(PlaceholderContent.ITEMS));
+            recyclerView.setAdapter(new MyGuardianRecyclerViewAdapter(GuardianContent.ITEMS));
         }
         return view;
     }

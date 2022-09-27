@@ -13,6 +13,6 @@
     android:foregroundGravity="center"
     app:layoutManager="LinearLayoutManager"
     app:layout_anchorGravity="center"
-    tools:context=".calenderFragment"
+    tools:context=".CalenderFragment"
     tools:itemCount="7"
     tools:listitem="@layout/fragment_calender" />

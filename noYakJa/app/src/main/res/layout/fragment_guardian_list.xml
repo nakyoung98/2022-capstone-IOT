@@ -12,5 +12,6 @@
     android:background="@drawable/list_background"
     app:layoutManager="LinearLayoutManager"
     tools:context=".GuardianFragment"
+    tools:ignore="SpeakableTextPresentCheck"
     tools:itemCount="0"
     tools:listitem="@layout/fragment_guardian" />

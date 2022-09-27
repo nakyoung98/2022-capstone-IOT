@@ -17,5 +17,6 @@
     <color name="guardian_setting_add_button_stroke">#ff0068b7</color>
     <color name="red">#FFe60012</color>
     <color name="blue">#ff0068b7</color>
+    <color name="hint_gray">#FF919191</color>
 
 </resources>

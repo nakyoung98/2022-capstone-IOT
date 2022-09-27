@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_button">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView2"
+            android:id="@+id/guardian_fragment"
             android:name="com.cauiot.noyakja.GuardianFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
