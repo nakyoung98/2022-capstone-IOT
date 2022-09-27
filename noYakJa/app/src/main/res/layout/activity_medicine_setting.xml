@@ -6,15 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MedicineSettingActivity">
 
-    <TextClock
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:id="@+id/guardian_add_title2"
+        android:id="@+id/dinner_time_textView"
+        style="@style/boxStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/dinner_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/morning_title"
+        app:layout_constraintTop_toTopOf="@+id/dinner_title" />
+
+    <TextView
+        android:id="@+id/lunch_time_textView"
+        style="@style/boxStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/lunch_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/morning_title"
+        app:layout_constraintTop_toTopOf="@+id/lunch_title" />
+
+    <TextView
+        android:id="@+id/medicine_setting_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -66,7 +79,7 @@
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guardian_add_title2" />
+        app:layout_constraintTop_toBottomOf="@+id/medicine_setting_title" />
 
     <TextView
         android:id="@+id/morning_title"
@@ -87,26 +100,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/medicine_time_title" />
 
-    <EditText
-        android:id="@+id/morning_time"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/box_background"
-        android:ems="10"
-        android:fontFamily="@font/chosun_nm"
-        android:gravity="center"
-        android:inputType="time"
-        android:padding="10dp"
-        android:textColor="@color/text_gray"
-        android:textColorHint="@color/text_gray"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/morning_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/morning_title"
-        app:layout_constraintTop_toTopOf="@+id/morning_title" />
-
     <TextView
         android:id="@+id/lunch_title"
         android:layout_width="0dp"
@@ -126,26 +119,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/morning_title" />
 
-    <EditText
-        android:id="@+id/lunch_time"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/box_background"
-        android:ems="10"
-        android:fontFamily="@font/chosun_nm"
-        android:gravity="center"
-        android:inputType="time"
-        android:padding="10dp"
-        android:textColor="@color/text_gray"
-        android:textColorHint="@color/text_gray"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/lunch_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/morning_title"
-        app:layout_constraintTop_toTopOf="@+id/lunch_title" />
-
     <TextView
         android:id="@+id/dinner_title"
         android:layout_width="0dp"
@@ -164,26 +137,6 @@
         android:textSize="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lunch_title" />
-
-    <EditText
-        android:id="@+id/dinner_time"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/box_background"
-        android:ems="10"
-        android:fontFamily="@font/chosun_nm"
-        android:gravity="center"
-        android:inputType="time"
-        android:padding="10dp"
-        android:textColor="@color/text_gray"
-        android:textColorHint="@color/text_gray"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/dinner_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/morning_title"
-        app:layout_constraintTop_toTopOf="@+id/dinner_title" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -254,5 +207,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/morning_time_textView"
+        style="@style/boxStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/morning_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/morning_title"
+        app:layout_constraintTop_toTopOf="@+id/morning_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
