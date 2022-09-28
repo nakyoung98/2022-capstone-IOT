@@ -23,6 +23,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.firestore.auth.User;
 
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +32,6 @@ public class LoginActivity extends Activity {
 
     private static final String TAG = "LoginActivity";
 
-    public UserInfo userInfo = null;
     public FirebaseUser user = null;
 
     private ActivityLoginBinding activityLoginBinding;
@@ -260,25 +260,23 @@ public class LoginActivity extends Activity {
                         String phone = hashMap.get("phone");
                         String uid = hashMap.get("uid");
 
-                        userInfo = new UserInfo(name, phone, uid);
-                        Log.i(TAG, userInfo.toString());
+                        UserInfo.setName(name);
+                        UserInfo.setPhone(phone);
+                        UserInfo.setUid(uid);
+                        Log.i(TAG, UserInfo.toString_());
 
                         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                        mainIntent.putExtra(UserInfo.getKey(),userInfo);
 
                         Log.i(TAG,"LoginActivity -> MainActivity");
-                        Log.i(TAG, userInfo.toString());
 
                         startActivity(mainIntent);
                     }else{ //첫로그인 (첫가입)
                         Intent userInfoIntent = new Intent(LoginActivity.this, UserInfoActivity.class);
 
                         //userInfo 담아 보냄
-                        userInfo = new UserInfo();
-                        userInfo.setUid(user.getUid());
-                        userInfo.setPhone(user.getPhoneNumber());
+                        UserInfo.setUid(user.getUid());
+                        UserInfo.setPhone(user.getPhoneNumber());
 
-                        userInfoIntent.putExtra(UserInfo.getKey(),userInfo);
 
                         Log.i(TAG,"LoginActivity -> UserInfoActivity");
                         startActivity(userInfoIntent);

@@ -8,14 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.cauiot.noyakja.DB.DB;
 import com.cauiot.noyakja.DB.DBSettingMedicine;
 import com.cauiot.noyakja.DB.DBStoreQuery;
 import com.cauiot.noyakja.DB.UserInfo;
 import com.cauiot.noyakja.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 
@@ -25,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding activityMainBinding;
 
-    private UserInfo userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +30,10 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = activityMainBinding.getRoot();
 
-        //intent 오류발생가능성 있음, serializable 등의 조치 필요할수도
-        Intent userIntent = getIntent();
-        userInfo= (UserInfo)userIntent.getSerializableExtra(UserInfo.getKey());
+        activityMainBinding.textviewUsername.setText(UserInfo.getName());
+        Log.i(TAG, "user name: " + UserInfo.getName());
 
-        activityMainBinding.textviewUsername.setText(userInfo.getName());
-        Log.i(TAG, "user name: " + userInfo.getName());
-
-        checkMedicineSetting(userInfo.getUid());
+        checkMedicineSetting(UserInfo.getUid());
 
         setContentView(view);
 
@@ -48,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent guardianIntent = new Intent(MainActivity.this, GuardianSettingActivity.class);
-                guardianIntent.putExtra(UserInfo.getKey(),userInfo);
 
                 Log.i(TAG,"MainActivity -> GuardianSettingActivity");
                 startActivity(guardianIntent);
@@ -86,22 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void goDBSettingMedicineActivity(boolean isFirst){
         Intent medicineSettingIntent = new Intent(MainActivity.this, MedicineSettingActivity.class);
-        medicineSettingIntent.putExtra(UserInfo.key, userInfo);
         medicineSettingIntent.putExtra("isFirst",isFirst);
         startActivity(medicineSettingIntent);
         Log.i(TAG,"MainActivity -> medicineSettingActivity");
 
-    }
-    private void UpdateUI(){
-        //Todo
-//        if(투약 정보가 없다면){
-//            Intent medicineSettingIntent = new Intent(MainActivity.this, MedicineSettingActivity.class);
-//            medicineSettingIntent.putExtra("userInfo", userInfo);
-//
-//            Log.i(TAG, "MainActivity -> MedicineSettingActivity");
-//
-//            startActivity(medicineSettingIntent);
-//        }
     }
 
 }

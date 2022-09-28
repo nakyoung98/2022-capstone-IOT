@@ -1,5 +1,7 @@
 package com.cauiot.noyakja.placeholder;
 
+import com.cauiot.noyakja.DB.DBGuardians;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,23 +25,24 @@ public class GuardianContent {
      */
     public static final Map<String, GuardianItem> ITEM_MAP = new HashMap<String, GuardianItem>();
 
-    private static final int COUNT = 25;
+    private static final int COUNT = DBGuardians.guardians!=null ? DBGuardians.guardians.size() : 0;
 
     static {
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
+        for (int i = 0; i < COUNT; i++) {
             addItem(createPlaceholderItem(i));
         }
     }
 
     private static void addItem(GuardianItem item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+        ITEM_MAP.put(item.name, item);
     }
 
     private static GuardianItem createPlaceholderItem(int position) {
-        return new GuardianItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
+        String name = DBGuardians.guardians.get(position).getName();
+        String phone = DBGuardians.guardians.get(position).getPhone();
+        return new GuardianItem(name, phone);    }
 
     private static String makeDetails(int position) {
         StringBuilder builder = new StringBuilder();
@@ -54,19 +57,16 @@ public class GuardianContent {
      * A placeholder item representing a piece of content.
      */
     public static class GuardianItem {
-        public final String id;
-        public final String content;
-        public final String details;
+        public final String name;
+        public final String phone;
 
-        public GuardianItem(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
+        public GuardianItem(String name, String phone) {
+            this.name = name;
+            this.phone = phone;
         }
 
         @Override
         public String toString() {
-            return content;
-        }
+            return "name: "+this.name+", "+"phone:"+this.phone;        }
     }
 }

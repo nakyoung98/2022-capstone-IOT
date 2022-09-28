@@ -1,5 +1,7 @@
 package com.cauiot.noyakja.placeholder;
 
+import com.cauiot.noyakja.DB.DBGuardians;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +25,7 @@ public class CalenderContent {
      */
     public static final Map<String, ContentItem> ITEM_MAP = new HashMap<String, ContentItem>();
 
-    private static final int COUNT = 7;
+    private static final int COUNT =  7;
 
     static {
         // Add some sample items.
@@ -34,11 +36,12 @@ public class CalenderContent {
 
     private static void addItem(ContentItem item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+        ITEM_MAP.put(item.name, item);
     }
 
     private static ContentItem createPlaceholderItem(int position) {
-        return new ContentItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        //todo
+        return new ContentItem("lee", "hello");
     }
 
     private static String makeDetails(int position) {
@@ -54,19 +57,17 @@ public class CalenderContent {
      * A placeholder item representing a piece of content.
      */
     public static class ContentItem {
-        public final String id;
-        public final String content;
-        public final String details;
+        public final String name;
+        public final String phone;
 
-        public ContentItem(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
+        public ContentItem(String name, String phone) {
+            this.name = name;
+            this.phone = phone;
         }
 
         @Override
         public String toString() {
-            return content;
+            return "name: "+this.name+", "+"phone:"+this.phone;
         }
     }
 }

@@ -33,8 +33,8 @@ public class MyGuardianRecyclerViewAdapter extends RecyclerView.Adapter<MyGuardi
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.nameView.setText(mValues.get(position).name);
+        holder.phoneView.setText(mValues.get(position).phone);
     }
 
     @Override
@@ -43,19 +43,19 @@ public class MyGuardianRecyclerViewAdapter extends RecyclerView.Adapter<MyGuardi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView nameView;
+        public final TextView phoneView;
         public GuardianItem mItem;
 
         public ViewHolder(FragmentGuardianBinding binding) {
             super(binding.getRoot());
-            mIdView = binding.guardianName;
-            mContentView = binding.guardianPhone;
+            nameView = binding.guardianName;
+            phoneView = binding.guardianPhone;
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + phoneView.getText() + "'";
         }
     }
 }

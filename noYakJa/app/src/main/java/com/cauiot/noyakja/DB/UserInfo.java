@@ -6,23 +6,23 @@ public class UserInfo implements Serializable {
 
     public static String key = "userInfo";
 
-    private String name;
-    private String phone;
-    private String uid;
+    private static String name;
+    private static String phone;
+    private static String uid;
 
-    public UserInfo() {}
-    public UserInfo(String name, String phone, String uid) {this.name = name; this.phone = phone; this.uid = uid;}
+//    public UserInfo() {}
+//    public UserInfo(String name, String phone, String uid) {this.name = name; this.phone = phone; this.uid = uid;}
 
-    public void setName(String name) {this.name = name;}
-    public void setPhone(String phone) {this.phone = phone;}
-    public void setUid(String uid) {this.uid = uid;}
+    public static void setName(String name) {UserInfo.name = name;}
+    public static void setPhone(String phone) {UserInfo.phone = phone;}
+    public static void setUid(String uid) {UserInfo.uid = uid;}
 
-    public String getName() {return name;}
-    public String getPhone() {return phone;}
-    public String getUid() {return uid;}
+    public static String getName() {return name;}
+    public static String getPhone() {return phone;}
+    public static String getUid() {return uid;}
 
-    public String toString(){
-        return "name: "+this.name+", phone: "+this.phone+", uid: "+this.uid;
+    public static String toString_(){
+        return "name: "+ UserInfo.name+", phone: "+UserInfo.phone+", uid: "+UserInfo.uid;
     }
 
     public static String getKey(){

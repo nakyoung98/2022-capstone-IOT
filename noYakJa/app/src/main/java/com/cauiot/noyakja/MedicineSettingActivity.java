@@ -32,7 +32,6 @@ public class MedicineSettingActivity extends AppCompatActivity {
     private DBSettingMedicine dbSettingMedicine;
     private TimePickerFragment newFragment;
 
-    private UserInfo userInfo;
 
 
     @Override
@@ -40,8 +39,6 @@ public class MedicineSettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityMedicineSettingBinding = ActivityMedicineSettingBinding.inflate(getLayoutInflater());
         View view = activityMedicineSettingBinding.getRoot();
-
-        userInfo = (UserInfo) getIntent().getSerializableExtra(UserInfo.getKey());
 
         dbSettingMedicine = new DBSettingMedicine();
 
@@ -153,8 +150,8 @@ public class MedicineSettingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //todo db
                 Log.i(TAG,"lastData:" + dbSettingMedicine.getMedicine().toString());
-                DBStoreQuery dbStoreQuery = new DBStoreQuery(dbSettingMedicine.getDBName(), userInfo.getUid());
-                dbStoreQuery.getReference().document(userInfo.getUid()).set(dbSettingMedicine).addOnSuccessListener(new OnSuccessListener<Void>() {
+                DBStoreQuery dbStoreQuery = new DBStoreQuery(dbSettingMedicine.getDBName(), UserInfo.getUid());
+                dbStoreQuery.getReference().document(UserInfo.getUid()).set(dbSettingMedicine).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d(TAG, "입력 성공");
@@ -192,8 +189,8 @@ public class MedicineSettingActivity extends AppCompatActivity {
     }
 
     private void checkMedicineSetting() {
-        DBStoreQuery dbStoreQuery = new DBStoreQuery(dbSettingMedicine.getDBName(), userInfo.getUid());
-        dbStoreQuery.getReference().document(userInfo.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DBStoreQuery dbStoreQuery = new DBStoreQuery(dbSettingMedicine.getDBName(), UserInfo.getUid());
+        dbStoreQuery.getReference().document(UserInfo.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){

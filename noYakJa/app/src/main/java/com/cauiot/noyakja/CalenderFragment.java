@@ -3,21 +3,38 @@ package com.cauiot.noyakja;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cauiot.noyakja.DB.DBGuardians;
+import com.cauiot.noyakja.DB.DBSettingMedicine;
+import com.cauiot.noyakja.DB.DBStoreQuery;
+import com.cauiot.noyakja.DB.Guardian;
+import com.cauiot.noyakja.DB.UserInfo;
 import com.cauiot.noyakja.placeholder.CalenderContent;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import kotlin.jvm.internal.TypeReference;
 
 /**
  * A fragment representing a list of Items.
  */
 public class CalenderFragment extends Fragment {
+
+    private final String TAG = "CalenderFragement";
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -45,6 +62,7 @@ public class CalenderFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -69,4 +87,6 @@ public class CalenderFragment extends Fragment {
         }
         return view;
     }
+
+
 }
