@@ -39,9 +39,9 @@ public class Alarm {
             calendar.set(Calendar.HOUR_OF_DAY,timeCount.getTime().hour);
             calendar.set(Calendar.MINUTE,timeCount.getTime().min);
 
-            if (calendar.before(Calendar.getInstance())){
-                calendar.add(Calendar.DATE,1);
-            }
+//            if (calendar.before(Calendar.getInstance())){
+//                calendar.add(Calendar.DATE,1);
+//            }
 
 
             Intent intent = new Intent(context, AlarmReceiver.class);
@@ -49,7 +49,7 @@ public class Alarm {
 
             if(this.alarmManager != null){
                 alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
-                Log.i(TAG, "알람 등록 완료: "+ requestCode);
+                Log.i(TAG, "알람 등록 완료: "+ requestCode + "알람시간: "+ timeCount.getTime().hour + ":"+ timeCount.getTime().min);
             }
 
         }else {

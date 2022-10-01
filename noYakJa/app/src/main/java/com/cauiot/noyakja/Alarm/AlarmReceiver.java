@@ -12,11 +12,13 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        mp = MediaPlayer.create(context, Settings.System.DEFAULT_RINGTONE_URI);
-        mp.setLooping(true);
-        mp.start();
+        if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
+            mp = MediaPlayer.create(context, Settings.System.DEFAULT_RINGTONE_URI);
+            mp.setLooping(true);
+            mp.start();
 
-        Intent intent1 = new Intent(context, AlarmActivity.class);
-        context.startActivity(intent1);
+            Intent intent1 = new Intent(context, AlarmActivity.class);
+            context.startActivity(intent1);        }
+
     }
 }
