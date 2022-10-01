@@ -1,5 +1,7 @@
 package com.cauiot.noyakja;
 
+import static com.cauiot.noyakja.placeholder.GuardianContent.addAllItem;
+
 import android.content.Context;
 import android.os.Bundle;
 
@@ -16,11 +18,17 @@ import android.view.ViewGroup;
 
 import com.cauiot.noyakja.DB.DBGuardians;
 import com.cauiot.noyakja.DB.DBStoreQuery;
+import com.cauiot.noyakja.DB.Guardian;
 import com.cauiot.noyakja.DB.UserInfo;
 import com.cauiot.noyakja.placeholder.GuardianContent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A fragment representing a list of Items.
@@ -55,8 +63,6 @@ public class GuardianFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        checkGuardianList();
-
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
@@ -79,30 +85,12 @@ public class GuardianFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
+
+            GuardianContent.addAllItem();
             recyclerView.setAdapter(new MyGuardianRecyclerViewAdapter(GuardianContent.ITEMS));
         }
         return view;
     }
 
-    private void checkGuardianList() {
-        DBStoreQuery dbStoreQuery = new DBStoreQuery(new DBGuardians().getDBName(), com.cauiot.noyakja.DB.UserInfo.getUid());
-        dbStoreQuery.getReference().document(UserInfo.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot document = task.getResult();
-                    if(document.exists()){
-                        Log.d(TAG, "DocumentSnapshotData: " + document.getData());
-                        DBGuardians.guardians = document.toObject(DBGuardians.guardians.getClass());
-                        if(DBGuardians.guardians != null) Log.i(TAG,"guardians List: "+ DBGuardians.guardians.toString());
-                        else Log.i(TAG,"no List!");
-                    }else{
-                        Log.d(TAG, "No such document");
-                    }
-                }else{
-                    Log.d(TAG, "get failed with", task.getException());
-                }
-            }
-        });
-    }
+
 }

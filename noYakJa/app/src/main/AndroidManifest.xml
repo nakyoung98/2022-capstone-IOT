@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cauiot.noyakja">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoYakJa"
         tools:targetApi="31">
+        <activity
+            android:name=".Alarm.AlarmActivity"
+            android:exported="false" />
         <activity
             android:name=".GuardianAddActivity"
             android:exported="false" />
@@ -37,6 +44,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".Alarm.AlarmReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.sec" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

@@ -42,15 +42,15 @@ public class GuardianSettingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent addIntent = new Intent(GuardianSettingActivity.this, GuardianAddActivity.class);
                 startActivity(addIntent);
+                finish();
             }
         });
 
         activityGuardianSettingBinding.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //todo
             }
         });
     }
-
-
 }

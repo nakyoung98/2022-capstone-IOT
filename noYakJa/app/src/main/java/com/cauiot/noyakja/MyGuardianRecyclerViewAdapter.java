@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class MyGuardianRecyclerViewAdapter extends RecyclerView.Adapter<MyGuardianRecyclerViewAdapter.ViewHolder> {
 
-    private final List<GuardianItem> mValues;
+    private List<GuardianItem> mValues;
 
     public MyGuardianRecyclerViewAdapter(List<GuardianItem> items) {
         mValues = items;

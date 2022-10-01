@@ -18,18 +18,20 @@ public class GuardianContent {
     /**
      * An array of sample (placeholder) items.
      */
-    public static final List<GuardianItem> ITEMS = new ArrayList<GuardianItem>();
+    public static List<GuardianItem> ITEMS = new ArrayList<GuardianItem>();
 
     /**
      * A map of sample (placeholder) items, by ID.
      */
-    public static final Map<String, GuardianItem> ITEM_MAP = new HashMap<String, GuardianItem>();
+    public static Map<String, GuardianItem> ITEM_MAP = new HashMap<String, GuardianItem>();
 
-    private static final int COUNT = DBGuardians.guardians!=null ? DBGuardians.guardians.size() : 0;
+//    private static int COUNT = DBGuardians.staticGuardians!=null ?  DBGuardians.staticGuardians.size(): 0;
 
-    static {
+    public static void addAllItem() {
         // Add some sample items.
-        for (int i = 0; i < COUNT; i++) {
+        ITEMS.clear();
+        ITEM_MAP.clear();
+        for (int i = 0; i < DBGuardians.staticGuardians.size(); i++) {
             addItem(createPlaceholderItem(i));
         }
     }
@@ -40,8 +42,8 @@ public class GuardianContent {
     }
 
     private static GuardianItem createPlaceholderItem(int position) {
-        String name = DBGuardians.guardians.get(position).getName();
-        String phone = DBGuardians.guardians.get(position).getPhone();
+        String name = DBGuardians.staticGuardians.get(position).getName();
+        String phone = DBGuardians.staticGuardians.get(position).getPhone();
         return new GuardianItem(name, phone);    }
 
     private static String makeDetails(int position) {

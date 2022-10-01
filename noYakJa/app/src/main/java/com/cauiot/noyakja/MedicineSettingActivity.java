@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.cauiot.noyakja.Alarm.Alarm;
 import com.cauiot.noyakja.DB.DBSettingMedicine;
 import com.cauiot.noyakja.DB.DBStoreQuery;
 import com.cauiot.noyakja.DB.MyTime;
@@ -161,8 +162,12 @@ public class MedicineSettingActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG,"DB 입력 중 오류발생",e);
                     }
-                })
-                ;
+                });
+
+                new Alarm(MedicineSettingActivity.this, dbSettingMedicine.getMedicine().getMorning(), Alarm.MORNING);
+                new Alarm(MedicineSettingActivity.this, dbSettingMedicine.getMedicine().getLunch(), Alarm.LUNCH);
+                new Alarm(MedicineSettingActivity.this, dbSettingMedicine.getMedicine().getDinner(), Alarm.DINNER);
+
                 //todo error 검증, 빈칸이 있을때 대처 필요 (추후 수정예정)
                 finish();
             }

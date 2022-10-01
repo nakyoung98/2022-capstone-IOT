@@ -20,6 +20,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.auth.User;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class GuardianAddActivity extends AppCompatActivity {
 
     private final String TAG = "GuardianAddActivity";
@@ -76,19 +80,42 @@ public class GuardianAddActivity extends AppCompatActivity {
         activityGuardianAddBinding.guardianAddCompleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DBGuardians.guardians.add(newGuardian);
+
+                DBGuardians dbGuardians = new DBGuardians();
+                dbGuardians.setGuardians(DBGuardians.staticGuardians);
+
+                dbGuardians.getGuardians().add(newGuardian);
+
+                String temp = "";
+                for (Guardian guardian: dbGuardians.getGuardians()) {
+                    temp += (" " + guardian.getName());
+                }
+                Log.i(TAG, temp);
                 //todo DB에 데이터 추가
                 DBStoreQuery dbStoreQuery = new DBStoreQuery(new DBGuardians().getDBName(), UserInfo.getUid());
+
+                HashMap<String ,ArrayList<Guardian>> hashMap = new HashMap<>();
+                hashMap.put("guardian_list",dbGuardians.getGuardians());
+
                 //중요, merge로 옵션 세팅해야함
-                dbStoreQuery.getReference().document(UserInfo.getUid()).set(DBGuardians.guardians).addOnSuccessListener(new OnSuccessListener<Void>() {
+                dbStoreQuery.getReference().document(UserInfo.getUid()).set(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Void unused) {Log.d(TAG, "입력 성공");}
+                    public void onSuccess(Void unused) {
+
+                        Log.d(TAG, "입력 성공");
+                        Intent GuardianIntent = new Intent(GuardianAddActivity.this, GuardianSettingActivity.class);
+                        startActivity(GuardianIntent);
+                        finish();
+                    }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {Log.w(TAG,"DB 입력 중 오류발생",e);}
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG,"DB 입력 중 오류발생",e);
+                        finish();
+                    }
+
                 });
 
-                finish();
             }
         });
 

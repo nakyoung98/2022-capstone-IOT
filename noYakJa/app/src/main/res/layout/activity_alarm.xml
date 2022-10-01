@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/list_background"
+    android:foregroundGravity="center"
+    tools:context=".Alarm.AlarmActivity">
+
+    <TextView
+        android:id="@+id/AlarmTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/chosun_nm"
+        android:text="약 복용 시간 알림"
+        android:textColor="@color/text_gray"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/chosun_nm"
+        android:text="13:00"
+        android:textColor="@color/black"
+        android:textSize="72dp"
+        app:layout_constraintEnd_toEndOf="@+id/AlarmTitle"
+        app:layout_constraintStart_toStartOf="@+id/AlarmTitle"
+        app:layout_constraintTop_toBottomOf="@+id/AlarmTitle" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time_text">
+
+        <Button
+            android:id="@+id/confirm_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/guardian_setting_add_button"
+            android:fontFamily="@font/chosun_nm"
+            android:text="확인"
+            android:textColor="@color/blue"
+            android:textSize="32dp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/outing_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/guardian_setting_delete_button"
+            android:fontFamily="@font/chosun_nm"
+            android:text="외출"
+            android:textColor="@color/red"
+            android:textSize="32dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
