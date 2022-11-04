@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.cauiot.noyakja.DB.Medicine;
 import com.cauiot.noyakja.DB.MyTime;
@@ -38,8 +39,10 @@ public class Alarm {
         if(timeCount.isEat == true){
             calendar.set(Calendar.HOUR_OF_DAY,timeCount.getTime().hour);
             calendar.set(Calendar.MINUTE,timeCount.getTime().min);
+            calendar.set(Calendar.SECOND, 0);
 
             if (calendar.before(Calendar.getInstance())){
+                Toast.makeText(context, "알람이 현재시간보다 이전", Toast.LENGTH_LONG).show();
                 calendar.add(Calendar.DATE,1);
             }
 
@@ -49,7 +52,7 @@ public class Alarm {
 
             if(this.alarmManager != null){
                 alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
-                Log.i(TAG, "알람 등록 완료: "+ requestCode);
+                Log.i(TAG, "알람 등록 완료: "+ alarmManager.getNextAlarmClock().getShowIntent().toString() + " " +alarmManager.getNextAlarmClock().describeContents());
             }
 
         }else {
