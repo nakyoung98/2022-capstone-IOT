@@ -53,7 +53,7 @@ public class Alarm {
             if(this.alarmManager != null){
                 alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
                 Log.i(TAG, "알람 등록 완료: "+ alarmManager.getNextAlarmClock().getShowIntent().toString() + " " +alarmManager.getNextAlarmClock().describeContents());
-            }
+         }
 
         }else {
             Intent intent = new Intent(context, AlarmReceiver.class);
